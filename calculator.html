@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&family=Playball&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Baloo Bhai 2', cursive;
+        }
+
+        .outer{
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(24, 124, 238);
+        }
+
+        .inner {
+            position: relative;
+            left: 40%;
+            top: 35%;
+            height: 400px;
+            width: 500px;
+            background-color: white;
+            box-shadow: 5px 5px 10px 0 black;
+
+        }
+        .calcon{
+            padding: 23px;
+        }
+        h1{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+            font-family: 'Playball', cursive;
+        }
+        span{
+            font-weight: bold;
+        }
+        #num1{
+            margin-left: 20px;
+        }
+        label{
+            margin:10px;
+        }
+        .btn{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="calcon">
+                <h1>calculator</h1>
+                <p>have some fun with maths</p>
+                <br>
+                <form id="calc" onsubmit="calculations(); return false">
+                <label>type the first number</label>
+                <input type="number" name="number" id=num1><br/>
+                <label>type the second number</label>
+                <input type="number" name="number" id=num2><br/>
+                <label>select the operation to perform</label>
+
+                <select name="select" id="select">
+                <option value="add">add</option>
+                <option value="sub">sub</option>
+                <option value="mul">mul</option>
+                <option value="div">div</option>
+                </select><br/>
+                <input type="submit" class="btn" id="btn">
+                <br>
+                <span id="result"></span>
+            </form>
+
+            </div>
+        </div>
+    </div>
+    <script>
+    
+    const calculations=()=>{
+            const number1 = document.getElementById('num1').value;
+            const number2 = document.getElementById('num2').value;
+            const selecting = document.getElementById('select');
+            const selection = select.options[selecting.selectedIndex].value;
+            const addition = (number1,number2)=> Number(number1)+Number(number2);
+            const substraction=(number1,number2)=> Number(number1)-Number(number2);
+            const division=(number1,number2)=> Number(number1)/Number(number2);
+            const multiply=(number1,number2)=> Number(number1)*Number(number2);
+
+
+            let results;
+            if(selection=='add'){
+                results = addition(number1,number2);
+                document.getElementById('result').innerHTML=`the added value is ${results}`
+            }
+            else if(selection=='sub') {
+            results = substraction(number1,number2);
+            document.getElementById('result').innerHTML=`the substracted value is ${results}`
+            }
+            else if(selection=='div') {
+            results = division(number1,number2);
+            document.getElementById('result').innerHTML=`the divided value is ${results}`
+            }
+            else  {
+            results = multiply(number1,number2);
+            document.getElementById('result').innerHTML=`the multiplied value is ${results}`
+            }
+           
+        }
+        
+    </script>
+</body>
+</html>
